@@ -1,0 +1,57 @@
+:host{
+  .logo{
+    width: 100%;
+    background: var(--bluegray-900);
+    color: var(--bluegray-100);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    span{
+      font-size: 20px;
+      padding: 18px 0;
+    }
+  }
+
+  ::ng-deep p-menu{
+    .p-menu{
+      border: none;
+      background: transparent;
+      width: 100%;
+    }
+
+    .p-menuitem-link{
+      padding-top: 18px;
+      padding-bottom: 18px;
+
+      .p-menuitem-text,
+      .p-menuitem-icon{
+        color: var(--bluegray-200);
+      }
+
+      &:focus{
+        box-shadow: none;
+      }
+    }
+
+    .p-menuitem-link:not(.p-disabled):hover{
+      background: var(--bluegray-600);
+
+      & .p-menuitem-text,.p-menuitem-icon{
+        color: var(--bluegray-50);
+      }
+    }
+  }
+
+  ::ng-deep .p-card{
+    width: 240px;
+    height: 100%;
+    min-height: 100vh;
+    background-color: var(--bluegray-800);
+
+    .p-card-body, .p-card-content{
+      padding: 0;
+    }
+  }
+}

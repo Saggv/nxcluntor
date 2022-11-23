@@ -1,6 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+import { UiModule } from '@cluntor/ui';
+
+import {ButtonModule} from 'primeng/button';
 
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
@@ -29,7 +34,13 @@ const routes: Routes = [
     HeaderComponent,
     FooterComponent,
   ],
-  imports: [BrowserModule, RouterModule.forRoot(routes)],
+  imports: [
+    BrowserModule, 
+    RouterModule.forRoot(routes),
+    UiModule,
+    BrowserAnimationsModule,
+    ButtonModule
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

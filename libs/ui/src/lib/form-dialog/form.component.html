@@ -1,0 +1,39 @@
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <ng-container *ngFor="let field of fields">
+    <input
+     *ngIf="field.type === 'id'"
+    [id]="field.key"
+    [formControlName]="field.key"
+    [type]="field.type"
+    class="w-full mb-1 hidden"
+    pInputText
+   />
+
+    <div class="field" *ngIf="field.type !== 'id'">
+      <label [for]="field.key" class="block">{{ field.label }}</label>
+      <ng-container *ngIf="field.type ==='input'">
+        <input
+        [id]="field.key"
+        [formControlName]="field.key"
+        [type]="field.type"
+        class="w-full mb-1"
+        pInputText
+      />
+      </ng-container>
+
+      <ng-container *ngIf="field.type === 'color'">
+        <p-colorPicker [formControlName]="field.key"></p-colorPicker>
+      </ng-container>
+
+      <invalid-error
+        [fieldControl]="$any(form.get(field.key))"
+        [label]="field.label"
+      ></invalid-error>
+    </div>
+  </ng-container>
+
+
+  <div class="text-right mt-4">
+    <button pButton type="submit" label="Submit"></button>
+  </div>
+</form>
