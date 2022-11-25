@@ -19,7 +19,7 @@ export class SidebarComponent implements OnInit{
       {label: 'Products', icon: 'pi pi-fw pi-briefcase', routerLink: 'products'},
       {label: 'Categories', icon: 'pi pi-fw pi-list', routerLink: 'categories'},
       {label: 'Orders', icon:'pi pi-fw pi-shopping-cart' },
-      {label: 'Users', icon: 'pi pi-fw pi-users'},
+      {label: 'Users', icon: 'pi pi-fw pi-users', routerLink: 'users'},
       {label: 'Logout', icon: 'pi pi-fw pi-sign-out' }
      ];
   }

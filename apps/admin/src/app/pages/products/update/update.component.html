@@ -1,0 +1,252 @@
+<p-card [header]="id ? 'Update Product' : 'Add New Product'">
+  <p-toolbar>
+    <div class="p-toolbar-group-left"></div>
+
+    <div class="p-toolbar-group-right">
+      <p-button
+        label="Submit"
+        icon="pi pi-plus"
+        styleClass="p-button-success p-button-sm mr-3"
+        (click)="btnSubmit.click()"
+      ></p-button>
+
+      <p-button
+        label="Cancel"
+        icon="pi pi-times"
+        styleClass="p-button-danger p-button-sm"
+        (click)="redirectToProducts()"
+      ></p-button>
+    </div>
+  </p-toolbar>
+
+  <div class="mt-4"></div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <button type="submit" hidden #btnSubmit></button>
+
+    <div class="formgrid grid">
+      <div class="field col-6">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          formControlName="name"
+          type="text"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <div
+          *ngIf="
+            form.controls['name'].invalid &&
+            (form.controls['name'].dirty || form.controls['name'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['name']?.errors?.['required']"
+          >
+            Name is required
+          </small>
+        </div>
+      </div>
+      <div class="field col-6">
+        <label for="brand">Brand</label>
+        <input
+          id="brand"
+          type="text"
+          formControlName="brand"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <div
+          *ngIf="
+            form.controls['brand'].invalid &&
+            (form.controls['brand'].dirty || form.controls['brand'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.get('brand')?.errors?.['required']"
+          >
+            Branh is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-6">
+        <label for="price">Price</label>
+        <input
+          id="price"
+          type="number"
+          formControlName="price"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <div
+          *ngIf="
+            form.controls['price'].invalid &&
+            (form.controls['price'].dirty || form.controls['price'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.get('price')?.errors?.['required']"
+          >
+            Price is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-6">
+        <label for="countInStock">Count In Stock</label>
+        <input
+          id="countInStock"
+          type="number"
+          formControlName="countInStock"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <div
+          *ngIf="
+            form.controls['countInStock'].invalid &&
+            (form.controls['countInStock'].dirty ||
+              form.controls['countInStock'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['countInStock']?.errors?.['required']"
+          >
+            Count in stock is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-6">
+        <label for="category">Category</label>
+        <p-dropdown
+          class="text-base text-color block w-full"
+          [options]="categories"
+          [filter]="true"
+          optionValue="_id"
+          formControlName="category"
+          optionLabel="name"
+          autoWidth="false" [style]="{'width':'100%'}"
+        ></p-dropdown>
+        <div
+          *ngIf="
+            form.controls['category'].invalid &&
+            (form.controls['category'].dirty ||
+              form.controls['category'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['category']?.errors?.['required']"
+          >
+            Category is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-6">
+        <label for="isFeatured" class="block">Is Featured?</label>
+        <p-inputSwitch class="block" formControlName="isFeatured"></p-inputSwitch>
+        <div
+          *ngIf="
+            form.controls['isFeatured'].invalid &&
+            (form.controls['isFeatured'].dirty ||
+              form.controls['isFeatured'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['isFeatured']?.errors?.['required']"
+          >
+            Is featured is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-12">
+        <label for="description">Description</label>
+        <textarea
+          formControlName="description"
+          id="description"
+          type="text"
+          rows="4"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        ></textarea>
+
+        <div
+          *ngIf="
+            form.controls['description'].invalid &&
+            (form.controls['description'].dirty ||
+              form.controls['description'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['description']?.errors?.['required']"
+          >
+            Description is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-12">
+        <label for="productDetail">Product Details</label>
+        <p-editor
+          formControlName="productDetail"
+          [style]="{ height: '320px' }"
+        ></p-editor>
+
+        <div
+          *ngIf="
+            form.controls['productDetail'].invalid &&
+            (form.controls['productDetail'].dirty ||
+              form.controls['productDetail'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['productDetail']?.errors?.['required']"
+          >
+            Product details is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-12">
+        <label for="image">Main Image</label>
+        <input
+          type="file"
+          class="p-inputtext block w-full"
+          (change)="onChangeFile($event)"
+          accept="image/*"
+        />
+
+        <div class="block mt-3">
+          <p-image
+            *ngIf="imageDisplay"
+            [src]="imageDisplay"
+            alt="Image"
+            width="250"
+            [preview]="true"
+          ></p-image>
+        </div>
+
+        <div
+          *ngIf="
+            form.controls['image'].invalid &&
+            (form.controls['image'].dirty || form.controls['image'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['image']?.errors?.['required']"
+          >
+            Image is required
+          </small>
+        </div>
+      </div>
+    </div>
+  </form>
+</p-card>
+
+<p-toast></p-toast>

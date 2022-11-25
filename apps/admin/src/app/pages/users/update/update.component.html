@@ -1,0 +1,230 @@
+<p-card [header]="id ? 'Update User' : 'Add New User'">
+  <p-toolbar>
+    <div class="p-toolbar-group-left"></div>
+
+    <div class="p-toolbar-group-right">
+      <p-button
+        label="Submit"
+        icon="pi pi-plus"
+        styleClass="p-button-success p-button-sm mr-3"
+        (click)="btnSubmit.click()"
+      ></p-button>
+
+      <p-button
+        label="Cancel"
+        icon="pi pi-times"
+        styleClass="p-button-danger p-button-sm"
+        (click)="redirectToProducts()"
+      ></p-button>
+    </div>
+  </p-toolbar>
+
+  <div class="mt-4"></div>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <button type="submit" hidden #btnSubmit></button>
+
+    <div class="formgrid grid">
+      <div class="field col-6">
+        <label for="name">Name</label>
+        <input
+          id="name"
+          formControlName="name"
+          type="text"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <div
+          *ngIf="
+            form.controls['name'].invalid &&
+            (form.controls['name'].dirty || form.controls['name'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['name']?.errors?.['required']"
+          >
+            Name is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-6">
+        <label for="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          autocomplete="disabled"
+          formControlName="email"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <div
+          *ngIf="
+            form.controls['email'].invalid &&
+            (form.controls['email'].dirty || form.controls['email'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.get('email')?.errors?.['required']"
+          >
+            Email is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-6">
+        <label for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          autocomplete="off"
+          formControlName="password"
+          pPassword 
+          toggleMask="true"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <div
+          *ngIf="
+            form.controls['password'].invalid &&
+            (form.controls['password'].dirty || form.controls['password'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.get('password')?.errors?.['required']"
+          >
+            Password is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-6">
+        <label for="phone">Phone</label>
+        <input
+          id="phone"
+          type="number"
+          formControlName="phone"
+          class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full"
+        />
+        <div
+          *ngIf="
+            form.controls['phone'].invalid &&
+            (form.controls['phone'].dirty || form.controls['phone'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.get('phone')?.errors?.['required']"
+          >
+            Phone is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-6">
+        <label for="city">City</label>
+        <p-dropdown
+          class="text-base text-color block w-full"
+          [options]="provinces"
+          [filter]="true"
+          formControlName="city"
+          optionLabel="province_name"
+          autoWidth="false" [style]="{'width':'100%'}"
+          placeholder="Select City"
+          [showClear]="true"
+        ></p-dropdown>
+        <div
+          *ngIf="
+            form.controls['city'].invalid &&
+            (form.controls['city'].dirty ||
+              form.controls['city'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['city']?.errors?.['required']"
+          >
+            City is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-6">
+        <label for="district">District</label>
+        <p-dropdown
+          class="text-base text-color block w-full"
+          [options]="districts"
+          [filter]="true"
+          formControlName="district"
+          optionLabel="district_name"
+          autoWidth="false" [style]="{'width':'100%'}"
+          placeholder="Select District"
+          [showClear]="true"
+        ></p-dropdown>
+        <div
+          *ngIf="
+            form.controls['district'].invalid &&
+            (form.controls['district'].dirty ||
+              form.controls['district'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['district']?.errors?.['required']"
+          >
+            District is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-6">
+        <label for="ward">Ward</label>
+        <p-dropdown
+          class="text-base text-color block w-full"
+          [options]="wards"
+          [filter]="true"
+          formControlName="ward"
+          optionLabel="ward_name"
+          autoWidth="false" [style]="{'width':'100%'}"
+          placeholder="Select Ward"
+          [showClear]="true"
+        ></p-dropdown>
+        <div
+          *ngIf="
+            form.controls['ward'].invalid &&
+            (form.controls['ward'].dirty ||
+              form.controls['ward'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['ward']?.errors?.['required']"
+          >
+            Ward is required
+          </small>
+        </div>
+      </div>
+
+      <div class="field col-6">
+        <label for="isAdmin" class="block">Is Admin?</label>
+        <p-inputSwitch class="block" formControlName="isAdmin"></p-inputSwitch>
+        <div
+          *ngIf="
+            form.controls['isAdmin'].invalid &&
+            (form.controls['isAdmin'].dirty ||
+              form.controls['isAdmin'].touched)
+          "
+        >
+          <small
+            class="p-error block"
+            *ngIf="form.controls['isAdmin']?.errors?.['required']"
+          >
+            Is admin is required
+          </small>
+        </div>
+      </div>
+    </div>
+  </form>
+</p-card>
+
+<p-toast></p-toast>

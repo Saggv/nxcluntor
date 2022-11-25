@@ -11,12 +11,12 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 import {CardModule} from 'primeng/card';
 import {MenuModule} from 'primeng/menu';
-
-import { CategoriesModule } from './pages/categories/categories.module';
+import {ToastModule} from 'primeng/toast';
 
 const UiPrimeModule = [
   CardModule,
-  MenuModule
+  MenuModule,
+  ToastModule
 ]
 
 const routes: Routes = [
@@ -31,6 +31,14 @@ const routes: Routes = [
       {
         path: 'categories',
         loadChildren: () => import('./pages/categories/categories.module').then(m => m.CategoriesModule)
+      },
+      {
+        path: 'products',
+        loadChildren: () => import('./pages/products/products.module').then(m => m.ProductsModule)
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./pages/users/users.module').then(m => m.UsersModule)
       }
     ],
   },
