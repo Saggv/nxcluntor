@@ -1,0 +1,53 @@
+<p-card header="Order">
+  <p-table
+    [value]="orders"
+    styleClass="p-datatable-gridlines"
+    [tableStyle]="{ 'min-width': '50rem' }"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="user" style="width: 15%">
+          User <p-sortIcon field="user"></p-sortIcon>
+        </th>
+        <th pSortableColumn="totalPrice" style="width: 20%">
+          Total Price <p-sortIcon field="totalPrice"></p-sortIcon>
+        </th>
+        <th pSortableColumn="dateOrdered" style="width: 15%">
+          Date Ordered <p-sortIcon field="dateOrdered"></p-sortIcon>
+        </th>
+        <th pSortableColumn="status" style="width: 15%">
+          Status <p-sortIcon field="status"></p-sortIcon>
+        </th>
+        <th style="width: 20%">Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-order>
+      <tr>
+        <td>{{ order.user.name }}</td>
+        <td>
+          {{ order.totalPrice | currency }}
+        </td>
+        <td>{{ order.dateOrdered | date:'short'}}</td>
+        <td>{{ order.status }}</td>
+        <td>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-rounded p-button-text p-button-success p-button-sm"
+            (click)="orderDetail(order._id)"
+          ></button>
+          <button
+            pButton
+            pRipple
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-secondary p-button-text p-button-danger p-button-sm"
+            (click)="deleteOrder(order._id)"
+          ></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

@@ -33,4 +33,8 @@ export class UsersService{
   deleteUser(id: string){
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
+
+  getTotalUser(){
+    return this.http.get(`${this.baseUrl}/get/count`);
+  }
 }

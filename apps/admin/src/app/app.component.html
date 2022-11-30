@@ -1,2 +1,15 @@
+<p-progressBar
+  *ngIf="loadingService.isLoading"
+  mode="indeterminate"
+  [style]="{
+    height: '4px',
+    position: 'absolute',
+    'z-index': '1000',
+    width: '100%'
+  }"
+></p-progressBar>
+
 <router-outlet></router-outlet>
 <p-toast></p-toast>
+
+

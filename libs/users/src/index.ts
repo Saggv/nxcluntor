@@ -2,3 +2,8 @@ export * from './lib/users';
 export * from './lib/services/users.service';
 export * from './lib/models/user';
 export * from './lib/services/provinces.service';
+export * from './lib/services/auth.service';
+export * from './lib/services/localstorage.service';
+export * from './lib/services/auth-guard.servive';
+export * from './lib/services/jwt-interceptor.sevice';
+export * from './lib/services/loading.service';

@@ -89,7 +89,6 @@ export class UserUpdateComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form)
     this.form.markAllAsTouched();
     if (this.form.invalid) return;
 
@@ -101,6 +100,10 @@ export class UserUpdateComponent implements OnInit {
             severity: 'success',
             summary: 'Update User Successfully',
           });
+
+          setTimeout(() =>{
+            this.redirectToProducts()
+          }, 2000)
         });
 
       return;
@@ -111,6 +114,10 @@ export class UserUpdateComponent implements OnInit {
         severity: 'success',
         summary: 'Add User Successfully',
       });
+
+      setTimeout(() =>{
+        this.redirectToProducts()
+      }, 2000)
     });
   }
 

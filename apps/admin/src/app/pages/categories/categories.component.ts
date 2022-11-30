@@ -9,7 +9,7 @@ import { MessageService } from 'primeng/api';
   selector: 'cluntor-categories',
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.scss'],
-  providers: [DialogService, MessageService],
+  providers: [DialogService],
 })
 export class CategoriesComponent implements OnInit {
   categories: Category[] = [];

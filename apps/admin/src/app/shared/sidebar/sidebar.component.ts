@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '@cluntor/users';
 import {MenuItem, MessageService, PrimeNGConfig} from 'primeng/api';
 
 @Component({
@@ -9,19 +10,23 @@ import {MenuItem, MessageService, PrimeNGConfig} from 'primeng/api';
 export class SidebarComponent implements OnInit{
   public items: MenuItem[];
 
-  constructor(){
+  constructor(private authServie: AuthService){
 
   }
 
   ngOnInit(): void {
      this.items = [
-      {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: 'dashboard'},
+      {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: '/'},
       {label: 'Products', icon: 'pi pi-fw pi-briefcase', routerLink: 'products'},
       {label: 'Categories', icon: 'pi pi-fw pi-list', routerLink: 'categories'},
-      {label: 'Orders', icon:'pi pi-fw pi-shopping-cart' },
+      {label: 'Orders', icon:'pi pi-fw pi-shopping-cart', routerLink: 'orders' },
       {label: 'Users', icon: 'pi pi-fw pi-users', routerLink: 'users'},
-      {label: 'Logout', icon: 'pi pi-fw pi-sign-out' }
+      {label: 'Logout', icon: 'pi pi-fw pi-sign-out', command: () => this.logout() }
      ];
+  }
+
+  logout(){
+    this.authServie.logout();
   }
 
 }

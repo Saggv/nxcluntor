@@ -33,4 +33,8 @@ export class ProductsService{
   deleteProduct(id: string){
     return this.http.delete(`${this.baseUrl}/${id}`);
   }
+
+  getTotalProducts(){
+    return this.http.get(`${this.baseUrl}/get/count`)
+  }
 }
