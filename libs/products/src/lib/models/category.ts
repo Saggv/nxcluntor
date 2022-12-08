@@ -2,5 +2,6 @@ export interface Category{
   _id?: string,
   name: string,
   icon: string,
-  color: string
+  color: string,
+  checked?: boolean
 }

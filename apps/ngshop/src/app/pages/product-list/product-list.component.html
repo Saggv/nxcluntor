@@ -1,1 +1,28 @@
-<p>product-list works!</p>
+<ng-container *ngIf="!isDetailPage">
+  <div class="grid container">
+    <div class="col-2" *ngIf="!isCategoryPage">
+      <h4 class="text-2xl">Category</h4>
+  
+      <ng-container *ngFor="let category of categories">
+        <div class="block field-checkbox">
+          <p-checkbox [inputId]="category.name" [name]="category.name" [binary]="true" [(ngModel)]="category.checked" (onChange)="onFilter($event)"></p-checkbox>
+        <label class="cursor-pointer capitalize" [for]="category.name">{{category.name}}</label>
+        </div>
+      </ng-container>
+    </div>
+  
+    <div class="col-{{isCategoryPage ? '12' : '10'}} pt-6">
+      <div class="grid">
+        <ng-container *ngFor="let product of products">
+          <div class="col-3 mt-8 cursor-pointer" (click)="redirectToDetail(product.id)">
+             <product-item [product]="product"></product-item>
+        </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="isDetailPage">
+  <router-outlet></router-outlet>
+</ng-container>

@@ -1,4 +1,47 @@
-<p class="red">home-page works!</p>
-<p-button icon="pi pi-check"></p-button>
-<p-button label="Submit" icon="pi pi-check"></p-button>
-<p-button label="Submit" icon="pi pi-check" iconPos="right"></p-button>
+<div class="container">
+  <div class="flex align-items-center py-4">
+    <div class="">
+      <h1 class="text-8xl line-height-1 mb-0 text-blue-400">Online Shopping</h1>
+      <h2 class="text-4xl mb-0 text-800">Where you can buy our <br /> best products.</h2>
+      <p class="mt-2 mb-3" >We are trying to provide our best services and online system <br /> to our customers</p>
+  
+      <button pButton type="button" label="Go to our product" ></button>
+    </div>
+  
+    <div class="pt-5">
+      <img src="../../../assets/image/sale.png" />
+    </div>
+  </div>
+
+  <p-carousel [value]="categories" styleClass="px-6 mt-6" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
+    <ng-template pTemplate="header">
+        <h5 class="text-3xl mb-2 mt-0">Category</h5>
+    </ng-template>
+    <ng-template let-category pTemplate="item">
+      <p-card styleClass="m-2 cursor-pointer" [style]="{backgroundColor: category.color}" (click)="redirectToCategoryPage(category._id)">
+        <div class="flex flex-column justify-content-center align-items-center">
+          <i class="pi pi-{{category.icon}}" style="font-size: 40px"></i>
+          <label class="block mt-2 capitalize">{{category.name}}</label>
+        </div>
+      </p-card>
+    </ng-template>
+</p-carousel>
+
+  <div class="grid m-8">
+    <ng-container *ngIf="featuredProduts.length > 0">
+      <ng-container *ngFor="let product of featuredProduts">
+        <div class="col-3">
+            <product-item [product]="product"></product-item>
+        </div>
+      </ng-container>
+    </ng-container>
+
+  <ng-container *ngIf="featuredProduts.length <=0">
+    <div>
+      <p-card>
+        <p-skeleton width="4rem" height="2rem"></p-skeleton>
+      </p-card>
+    </div>
+  </ng-container>
+  </div>
+</div>

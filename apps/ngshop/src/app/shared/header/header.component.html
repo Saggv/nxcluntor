@@ -1,1 +1,24 @@
-<p>header works!</p>
+<nav class="flex align-items-center justify-content-between container py-3">
+  <div class="logo">
+    <i class="pi pi-amazon" style="font-size: 35px"></i>
+  </div>
+
+  <div class="">
+    <span class="p-input-icon-left">
+      <i class="pi pi-search"></i>
+      <input type="text" pInputText placeholder="Search" [(ngModel)]="searchTextValue" />
+  </span>
+  </div>
+
+  <ul class="flex align-items-center list-none m-0">
+    <li class="p-3"><a class="cursor-pointer" class="no-underline text-700" routerLink="/">Home</a></li>
+    <li class="p-3"><a class="cursor-pointer" class="no-underline text-700"  routerLink="/products">Products</a></li>
+    <li class="p-3"><a class="cursor-pointer" class="no-underline text-700" >Contact</a></li>
+
+    <div class="mr-0 ml-8">
+      <i class="pi pi-shopping-cart cursor-pointer mr-2"></i>
+
+      <i class="pi pi-user cursor-pointer"></i>
+    </div>
+  </ul>
+</nav>
