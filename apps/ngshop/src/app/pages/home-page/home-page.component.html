@@ -30,7 +30,7 @@
   <div class="grid m-8">
     <ng-container *ngIf="featuredProduts.length > 0">
       <ng-container *ngFor="let product of featuredProduts">
-        <div class="col-3">
+        <div class="col-3" (click)="redirectToDetail(product.id)">
             <product-item [product]="product"></product-item>
         </div>
       </ng-container>

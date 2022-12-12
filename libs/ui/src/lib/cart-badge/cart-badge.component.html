@@ -1,0 +1,2 @@
+<i (click)="redirectToCartPage()" *ngIf="value > 0" class="pi pi-shopping-cart cursor-pointer mr-4" pBadge="false" [value]="value.toString()" severity="danger"></i>
+<i (click)="redirectToCartPage()" *ngIf="value < 1" class="pi pi-shopping-cart cursor-pointer mr-4"></i>

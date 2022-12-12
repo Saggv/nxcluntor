@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
 
 import { UiModule } from '@cluntor/ui';
 
@@ -22,6 +24,10 @@ const routes: Routes = [
     path: 'products',
     loadChildren: () => import('./pages/product-list/product-list.module').then(m => m.ProductListModule)
   },
+  {
+    path: 'carts',
+    loadChildren: () => import('./pages/cart/cart.module').then(m => m.CartPageModule)
+  },
 ];
 
 @NgModule({
@@ -37,9 +43,10 @@ const routes: Routes = [
     BrowserAnimationsModule,
     ButtonModule,
     HeaderModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

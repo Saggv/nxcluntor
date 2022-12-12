@@ -1,0 +1,96 @@
+<div class="container">
+  <label (click)="redirectToProducts()" class="text-orange-500 text-sm flex align-items-center cursor-pointer py-3">
+    <i class="pi pi-arrow-left text-sm mr-2"></i>
+    Continue Shopping
+  </label>
+
+  <div class="grid" *ngIf="cartItems.length > 0">
+    <div class="col-9">
+      <label class="text-sm">My Cart Item(s): <span class="font-medium">5</span></label>
+
+      <p class="text-sm mt-1 mb-4 text-green-500">Shipping after the payment, Delivery time: 1 to 4 working days</p>
+
+      <ng-container *ngFor="let cart of cartItems">
+        <div (click)="redirectToProductDetail(cart.product.id)" class="flex justify-content-between align-items-center p-3 pr-3 my-3 border-300 border-y-1 cursor-pointer">
+          <div class="flex" style="maxWidth: 40%; width: 100%">
+            <div style="width: 100px; height: 70px; textAlign: center">
+              <img
+                [src]="cart.product.image"
+                style="max-height: 100%; objectFit: cover; max-width: 100%;"
+              />
+            </div>
+            <div class="flex flex-column px-3">
+              <label>{{cart.product.name}}</label>
+              <label class="line-through text-orange-500 text-sm mb-2"
+                >{{ cart.product.price }}.000<sup>&#8363;</sup></label
+              >
+              <i (click)="removeCartItem(cart.product.id)" class="pi pi-trash text-red-500 cursor-pointer"></i>
+            </div>
+          </div>
+  
+          <div>
+            <label class="text-600 block text-sm">Phân Loại:</label>
+            <label class="text-600 text-sm">Size: {{cart.product.size}}, Màu: {{cart.product.color}}</label>
+          </div>
+  
+          <div style="height: 30px" class="flex">
+            <button (click)="decreaseCartItem(cart.product)" class="h-full line-height-1 bg-white border-1 py-2 border-round-xs px-2 inline-block border-300 text-800 uppercase cursor-pointer">
+              <i class="pi pi-minus text-xs"></i>
+            </button>
+            <label 
+            class=" border-x-0 h-full line-height-1 bg-white border-1 py-2 border-round-xs px-4 inline-block border-300 text-sm text-800 uppercase cursor-pointer">
+            {{cart.quantity}}</label>
+            <button (click)="increaseCartItem(cart.product)" class=" h-full line-height-1 bg-white border-1 py-2 border-round-xs px-2 inline-block border-300 text-800 uppercase cursor-pointer">
+              <i class="pi pi-plus text-xs"></i>
+            </button>
+          </div>
+  
+          <label class="line-through text-orange-500 mb-2"
+          >{{ cart.product.price * cart.quantity }}.000<sup>&#8363;</sup></label
+        >
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="col-3">
+      <div class="border-300 border-1 px-3 py-4  border-round-md">
+        <h5 class="text-xl font-normal m-0 mb-3">Order Summary</h5>
+
+        <div class="flex justify-content-between text-sm">
+          <label>Items Price</label>
+
+          <label class="text-orange-500 mb-2 text-base">
+            {{ itemsPrice }}.000<sup>&#8363;</sup>
+          </label>
+        </div>
+
+        <div class="flex justify-content-between text-sm">
+          <label>Shipping</label>
+
+          <label class="text-orange-500 mb-2 text-base">
+            {{ shipping }}.000<sup>&#8363;</sup>
+          </label>
+        </div>
+
+        <div class="flex justify-content-between text-sm">
+          <label>Total Price</label>
+
+          <label class="text-orange-500 mb-2 text-base">
+            {{ totalPrice() }}.000<sup>&#8363;</sup>
+          </label>
+        </div>
+
+        <p-button label="CHECKOUT" styleClass="p-button-sm w-full mt-3 text-center"></p-button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="cartItems.length < 1" class="flex justify-content-center flex-column align-items-center h-full">
+    <img style="width: 350px;" src="../../../assets//image/empty-box.png" />
+    <label (click)="redirectToProducts()" class="text-orange-500 text-sm flex align-items-center cursor-pointer py-3">
+      Cart item not found! Add new items.
+    </label>
+  
+  </div>
+</div>
+
+

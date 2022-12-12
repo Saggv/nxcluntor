@@ -13,4 +13,6 @@ export interface Product{
   isFeatured: boolean;
   dateCreated: string;
   image: string;
+  size: string;
+  color: string;
 }

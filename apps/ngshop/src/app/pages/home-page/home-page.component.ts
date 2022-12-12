@@ -36,4 +36,8 @@ export class HomePageComponent implements OnInit {
   redirectToCategoryPage(id: string) {
     this.router.navigateByUrl(`/products/category/${id}`);
   }
+
+  redirectToDetail(id: string){
+    this.router.navigateByUrl(`/products/${id}`)
+  }
 }

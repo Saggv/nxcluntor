@@ -12,12 +12,15 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { CardModule } from 'primeng/card';
 import { ProductItemComponent } from './product/product.component';
+import {BadgeModule} from 'primeng/badge';
+import { CartBadgeComponent } from './cart-badge/cart-badge.component';
 
 const primengModules = [
   ButtonModule,
   InputTextModule,
   ColorPickerModule,
   CardModule,
+  BadgeModule
 ];
 
 @NgModule({
@@ -27,6 +30,7 @@ const primengModules = [
     FormDialogComponent,
     InvalidErrorComponent,
     ProductItemComponent,
+    CartBadgeComponent
   ],
   imports: [
     CommonModule,
@@ -35,6 +39,6 @@ const primengModules = [
     ReactiveFormsModule,
     ...primengModules,
   ],
-  exports: [BannerComponent, SliderComponent, ProductItemComponent],
+  exports: [BannerComponent, SliderComponent, ProductItemComponent, CartBadgeComponent],
 })
 export class UiModule {}

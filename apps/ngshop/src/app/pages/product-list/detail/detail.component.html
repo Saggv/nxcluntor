@@ -108,13 +108,13 @@
               <input
                 type="radio"
                 class="hidden"
-                [(ngModel)]="selectedColor"
+                [(ngModel)]="selectedSize"
                 [id]="color.value"
                 [value]="color.value"
               />
               <label
                 [class]="
-                  selectedColor !== color.value
+                selectedSize !== color.value
                     ? 'border-1 py-2 border-round-xs px-3 inline-block border-300 text-sm text-800 uppercase cursor-pointer'
                     : 'border-1 py-2 border-round-xs px-3 inline-block border-orange-500 text-sm text-orange-500 uppercase cursor-pointer'
                 "
@@ -130,20 +130,30 @@
       <div class="my-3">
         <label class="text-600 text-base mb-3">Số Lượng</label>
 
-        <div class="amount mt-3">
-          <p-button  icon="pi pi-minus" class="p-button-outlined"></p-button>
+        <div class="amount mt-3 flex">
+          <!-- <p-button  icon="pi pi-minus" class="p-button-outlined"></p-button>
           <input
             type="number"
             class="p-inputtext-sm"
             placeholder="0"
             pInputText
           />
-          <p-button icon="pi pi-plus" class="p-button-outlined"></p-button>
+          <p-button icon="pi pi-plus" class="p-button-outlined"></p-button> -->
+
+          <button (click)="decreaseQuantity()" class="h-full line-height-1 bg-white border-1 py-2 border-round-xs px-2 inline-block border-300 text-800 uppercase cursor-pointer">
+            <i class="pi pi-minus text-xs"></i>
+          </button>
+          <label 
+          class=" border-x-0 h-full line-height-1 bg-white border-1 border-x-0 py-2 border-round-xs px-4 inline-block border-300 text-sm text-800 uppercase cursor-pointer">
+          {{quantity}}</label>
+          <button (click)="increaseQuantity()" class=" h-full line-height-1 bg-white border-1 py-2 border-round-xs px-2 inline-block border-300 text-800 uppercase cursor-pointer">
+            <i class="pi pi-plus text-xs"></i>
+          </button>
         </div>
       </div>
 
       <div class="my-3">
-        <button pButton pRipple type="button" icon="pi pi-shopping-cart" label="Add To Cart" class="p-button-outlined p-button-warning"></button>
+        <button (click)="addToCart()" pButton pRipple type="button" icon="pi pi-shopping-cart" label="Add To Cart" class="p-button-outlined p-button-warning"></button>
         
         <button pButton pRipple type="button" label="Mua Ngay" class="p-button-warning ml-3"></button>
       </div>
