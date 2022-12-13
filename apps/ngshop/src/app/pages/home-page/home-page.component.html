@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <p-carousel [value]="categories" styleClass="px-6 mt-6" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
+  <p-carousel [value]="categories" styleClass="mt-6" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
     <ng-template pTemplate="header">
         <h5 class="text-3xl mb-2 mt-0">Category</h5>
     </ng-template>
@@ -27,7 +27,7 @@
     </ng-template>
 </p-carousel>
 
-  <div class="grid m-8">
+  <div class="grid my-8">
     <ng-container *ngIf="featuredProduts.length > 0">
       <ng-container *ngFor="let product of featuredProduts">
         <div class="col-3" (click)="redirectToDetail(product.id)">

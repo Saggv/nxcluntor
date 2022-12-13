@@ -4,6 +4,10 @@ import { HttpClient } from "@angular/common/http";
 
 import { Order } from "../models/order";
 import { Observable } from "rxjs";
+import { switchMap } from 'rxjs/operators';
+
+import { StripeService } from 'ngx-stripe';
+import { CheckoutItem } from "../models/cart";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +15,8 @@ import { Observable } from "rxjs";
 export class OrdersService{
   baseUrl = `${enviroment.apiURL}/order`;
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private stripeService: StripeService
   ){}
 
   getOrders(): Observable<Order[]>{
@@ -40,5 +45,14 @@ export class OrdersService{
 
   getTotalSales(){
     return this.http.get(`${this.baseUrl}/get/totalSales`)
+  }
+
+  checkout(orderItems: CheckoutItem[]) {
+   return this.http.post(`${this.baseUrl}/create-checkout-session`, {orderItems})
+      .pipe(
+        switchMap((session: any) => {
+          return this.stripeService.redirectToCheckout({ sessionId: session.id })
+        })
+      )
   }
 }

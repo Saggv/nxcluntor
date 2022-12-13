@@ -16,6 +16,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TagModule } from 'primeng/tag';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {AccordionModule} from 'primeng/accordion';
+import {ImageModule} from 'primeng/image';
 
 const primengModules = [
   CardModule,
@@ -26,7 +27,8 @@ const primengModules = [
   InputTextModule,
   TagModule,
   SelectButtonModule,
-  AccordionModule
+  AccordionModule,
+  ImageModule
 ];
 
 const routes: Routes = [

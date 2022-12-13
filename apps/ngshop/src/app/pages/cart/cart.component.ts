@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { CartService } from "@cluntor/orders";
+import { CartService, CheckoutItem, OrdersService } from "@cluntor/orders";
 import { Product } from "@cluntor/products";
 import { CartItem } from "@cluntor/orders";
 import { Router } from "@angular/router";
@@ -14,7 +14,7 @@ export class CartPageComponent implements OnInit{
   cartItems: CartItem[] = [];
   itemsPrice: number;
   shipping = 30;
-  constructor(private cartService: CartService, private router: Router){}
+  constructor(private cartService: CartService, private router: Router, private orderService: OrdersService){}
 
   ngOnInit(): void {
     this.cartService.cart$.subscribe(data =>{
@@ -49,5 +49,22 @@ export class CartPageComponent implements OnInit{
 
   redirectToProductDetail(id: string){
     this.router.navigateByUrl(`/products/${id}`);
+  }
+
+  checkout(){
+    const orderItems: CheckoutItem[] = this.cartItems.map((item: CartItem) => {
+      return{
+        id: item.product.id,
+        quantity: item.quantity
+      }
+    })
+
+    this.orderService.checkout(orderItems).subscribe((result) =>{
+      if (result.error) {
+        alert(result.error.message);
+      }
+    }
+      
+    )
   }
 }

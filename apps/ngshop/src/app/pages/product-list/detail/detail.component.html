@@ -9,10 +9,13 @@
         [showItemNavigators]="true"
       >
         <ng-template pTemplate="item" let-item>
+         <div class="" style="height: 380px">
           <img
-            [src]="item.previewImageSrc"
-            style="width: 100%; height: 100%; display: block"
-          />
+          [src]="item.previewImageSrc"
+          style="width: 100%; height: 100%; display: block"
+        />
+         </div>
+          <!-- <p-image  [src]="item.previewImageSrc" alt="Image" width="100%" [preview]="true"></p-image> -->
         </ng-template>
         <ng-template pTemplate="thumbnail" let-item>
           <div class="grid grid-nogutter justify-content-center">
@@ -23,12 +26,12 @@
     </div>
 
     <div class="col-7">
-      <h5 class="text-2xl m-0 font-normal">{{ product.name }}</h5>
+      <h5 class="text-2xl m-0 font-normal text-900">{{ product.name }}</h5>
 
       <div class="flex py-3">
         <div class="flex mr-3">
           <label
-            class="underline line-height-2"
+            class="underline line-height-2 text-900"
             [style]="{ 'text-underline-offset': '4px' }"
             >4.6</label
           >
@@ -43,7 +46,7 @@
 
         <div class="mr-3 border-left-1 border-300 pl-3">
           <label
-            class="mr-1 underline line-height-2"
+            class="mr-1 underline line-height-2 text-900"
             [style]="{ 'text-underline-offset': '4px' }"
             >76</label
           >
