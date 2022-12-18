@@ -206,20 +206,30 @@
       </div>
 
       <div class="field col-6">
-        <label for="isAdmin" class="block">Is Admin?</label>
-        <p-inputSwitch class="block" formControlName="isAdmin"></p-inputSwitch>
+        <label for="isAdmin" class="block">Role</label>
+        <div class="field-radiobutton">
+          <p-radioButton name="role" value="Admin" formControlName="role" inputId="admin"></p-radioButton>
+          <label class="cursor-pointer" for="admin">Admin</label>
+
+          <p-radioButton name="role" value="Manager" styleClass="ml-4" formControlName="role" inputId="manager"></p-radioButton>
+          <label class="cursor-pointer" for="manager">Manager</label>
+
+          <p-radioButton name="role" value="User" styleClass="ml-4"  formControlName="role" inputId="user"></p-radioButton>
+          <label class="cursor-pointer" for="user">User</label>
+      </div>
+
         <div
           *ngIf="
-            form.controls['isAdmin'].invalid &&
-            (form.controls['isAdmin'].dirty ||
-              form.controls['isAdmin'].touched)
+            form.controls['role'].invalid &&
+            (form.controls['role'].dirty ||
+              form.controls['role'].touched)
           "
         >
           <small
             class="p-error block"
-            *ngIf="form.controls['isAdmin']?.errors?.['required']"
+            *ngIf="form.controls['role']?.errors?.['required']"
           >
-            Is admin is required
+            Role is required
           </small>
         </div>
       </div>

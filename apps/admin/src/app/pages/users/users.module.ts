@@ -19,6 +19,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import { ToastModule } from 'primeng/toast';
 import { TagModule } from 'primeng/tag';
 import {PasswordModule} from 'primeng/password'
+import {RadioButtonModule} from 'primeng/radiobutton';
 
 const primegnComponentModule = [
   CardModule,
@@ -33,7 +34,8 @@ const primegnComponentModule = [
   DropdownModule,
   ToastModule,
   TagModule,
-  PasswordModule
+  PasswordModule,
+  RadioButtonModule
 ];
 
 const routes: Routes = [

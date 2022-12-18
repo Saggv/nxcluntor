@@ -49,7 +49,7 @@ export class JWTInterceptorService implements HttpInterceptor {
           errorMsg = `Error: ${error.error.message}`;
         } else {
           console.log('this is server side error');
-          errorMsg = `M${error.message}`;
+          errorMsg = `${error.error.message}`;
         }
         console.log(error);
         this.messageService.add({

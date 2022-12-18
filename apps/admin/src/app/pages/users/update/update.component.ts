@@ -35,7 +35,7 @@ export class UserUpdateComponent implements OnInit {
       name: ['', Validators.required],
       email: ['', Validators.required],
       phone: ['', Validators.required],
-      isAdmin: [false, Validators.required],
+      role: ['', Validators.required],
       city: ['', Validators.required],
       password: ['', Validators.required],
       ward: ['', Validators.required],
@@ -53,11 +53,13 @@ export class UserUpdateComponent implements OnInit {
           const city = data.city;
           const district = data.district;
           const ward = data.ward;
-          delete city['_id'];
-          delete district['_id'];
-          delete ward['_id'];
+          city &&  delete city['_id'];
+          district && delete district['_id'];
+          ward && delete ward['_id'];
 
           this.form.patchValue({ ...data,city, district, ward });
+          this.form.controls['password'].setValidators([])
+          this.form.controls['password'].updateValueAndValidity()
           console.log(this.form.value);
         });
       }

@@ -28,8 +28,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-
-
     if (this.form.invalid) return;
 
     this.auth.login(this.form.value).subscribe((data: any) => {

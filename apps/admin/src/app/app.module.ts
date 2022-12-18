@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgxStripeModule } from 'ngx-stripe';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShellComponent } from './shared/shell/shell.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
@@ -72,6 +72,7 @@ const routes: Routes = [
     ...UiPrimeModule,
     RouterModule.forRoot(routes, { initialNavigation: 'enabledBlocking' }),
     HttpClientModule,
+    NgxStripeModule.forRoot('pk_test_51Hoje2CohLCE8kRQgOTM3TJJA67yIjO27xOAxbU5j0nRlLsOyGY0MQsoL4rkh95FCoKB63BJ1ywMJhlJRhY4jFuh00hoLbvTTp')
   ],
   providers: [
     {
